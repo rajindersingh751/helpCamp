@@ -41,8 +41,16 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://singh751:Ducati420@cluster0-m6gor.mongodb.net/test?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect();
+
 //mongoose.connect("mongodb://localhost/help");
-mongoose.connect("mongodb+srv://singh751:Ducati420@cluster0-m6gor.mongodb.net/test?retryWrites=true&w=majority");
+// mongoose.connect("mongodb+srv://singh751:Ducati420@cluster0-m6gor.mongodb.net/test?retryWrites=true&w=majority",{
+//     useNewUrlParser: true,
+//     useCreateIndex: true
+// });
    
 
 app.use(bodyParser.urlencoded({extended: true}));
