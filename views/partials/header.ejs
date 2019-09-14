@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Help Camp</title>
+        <link rel= "stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel ="stylesheet" href="/stylesheets/main.css">
+    </head>
+    <body>  
+         <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="/">HelpCamp</a>
+          
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                
+               <% if(!currentUser){ %>
+              		<li class="nav-item active">
+              		    <a class="nav-link" href="/register">Sign Up</a>
+              		</li>
+              		<li class="nav-item active">
+              		    <a class="nav-link" href="/login">Login</a>
+              		</li>
+              <% } else{ %>
+                    <li class="nav-item active">
+              		    <a class="nav-link" href="/campgrounds"><%= currentUser.username %> </a>
+              		</li>
+              		<li class="nav-item active">
+              		    <a class="nav-link" href="/logout">Logout</a>
+              		</li>
+          	<%  }%>
+          	
+          	</ul>
+        
+          </div>
+        </nav>
+        
+        <!--connecting our flash with tempelate-->
+        <div class= "container">
+            <!--we use success.length beacuse only checking success is not enogth we need to check the if some error or succes  msg-->
+            <%if(success && success.length > 0){%>
+            <div class="alert alert-success" role="alert">
+                <%= success %> 
+            </div>
+          <% } %>
+            <%if(error && error.length > 0) {%>
+            <div class="alert alert-danger " role="alert">
+                <%= error %> 
+            </div>
+        <% }%>
+        </div>
+        
