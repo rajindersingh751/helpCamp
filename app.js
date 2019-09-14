@@ -40,7 +40,11 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-mongoose.connect("mongodb://localhost/help");
+
+//mongoose.connect("mongodb://localhost/help");
+mongoose.connect("mongodb+srv://singh751:Ducati420@cluster0-m6gor.mongodb.net/test?retryWrites=true&w=majority");
+   
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
