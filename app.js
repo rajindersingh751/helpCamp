@@ -41,12 +41,13 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://singh751:Ducati420@cluster0-m6gor.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect();
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://singh751:Ducati420@cluster0-m6gor.mongodb.net/test?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect();
 
-//mongoose.connect("mongodb://localhost/help");
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp";
+mongoose.connect(url);
 // mongoose.connect("mongodb+srv://singh751:Ducati420@cluster0-m6gor.mongodb.net/test?retryWrites=true&w=majority",{
 //     useNewUrlParser: true,
 //     useCreateIndex: true
@@ -85,7 +86,6 @@ app.use(methodOverride("_method"));
 app.use("/",authRoutes);
 app.use("/campgrounds",campgroundRoutes);
 app.use("/campgrounds/:id/comments",commentRoutes);
-
 
 app.listen(process.env.PORT, process.env.IP, function(){
    console.log("The HelpCamp Server Has Started!");
