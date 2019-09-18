@@ -11,6 +11,7 @@ var methodOverride = require("method-override");
 
 var passport = require("passport");
 var LocalStrategy = require("passport-local");
+//user schema
 var User = require("./models/user");
 
 var seedDb = require("./seeds");
